@@ -1,22 +1,38 @@
-<!-- <h2>Cars</h2>
+<div class="container">
+<h2>Cars</h2>
  
-<form>
-  <md-input-container style="width:30%">
-    <input mdInput [(ngModel)]="newCar.model" placeholder="Model" name="model">
-  </md-input-container>
-  <md-input-container style="width:30%">
-    <input mdInput [(ngModel)]="newCar.make" placeholder="Make" name="manufacturer">
-  </md-input-container>
-  <button md-raised-button (click)="createCar(newCar)">Create Car</button>
- 
-  <md-list>
-    <md-list-item *ngFor="let car of cars" (click)="showInfo(car)">
-      <span>
+<form class="form-inline">
+  <div class="form-group">
+    <label for="search">Search for make or model: </label>
+    <input class="form-control" [(ngModel)]="searchText" placeholder="Type Make or Model" name="search">
+  </div>
+  <br><br>
+ </form>
+  <table  class="table">
+    <tr>
+        <th>Id</th>
+        <th>Make</th>
+        <th>Model</th>
+        <th></th>
+    </tr>
+    <tr *ngFor="let car of cars | filter : searchText" (click)="showInfo(car)">
+      <td>
+          {{car.id}}
+      </td>
+      <td>
+          {{car.make}}
+      </td>
+      <td>
           {{car.model}}
-      </span>
-      <span>
-        <button md-raised-button (click)="deleteCar(car); $event.stopPropagation()">Delete</button>
-      </span>
-    </md-list-item>
-  </md-list>
-</form> -->
+      </td>
+      <td>
+        <button class="btn btn-danger" (click)="deleteCar(car); $event.stopPropagation()">Delete</button>
+
+        <a  class="btn btn-primary" href="/car/{{car.id}}">
+        Update</a>
+
+        <button class="btn" (click)="updateCar(car); $event.stopPropagation()">View</button>
+      </td>
+    </tr>
+  </table>
+</div>

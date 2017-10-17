@@ -16,7 +16,7 @@ export class CarService {
   }
 
   private headers = new Headers({ 'Content-Type': 'application/json' });
-  private carsUrl = 'api/cars';
+  private carsUrl = 'localhost:8000/api';
 
   getCars(): Promise<Car[]> {
     return this.http.get(this.carsUrl)

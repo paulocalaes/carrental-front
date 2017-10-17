@@ -11,9 +11,10 @@ import 'rxjs/add/operator/toPromise';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-	title = 'Car Rental';
+	  title = 'Car Rental';
     email:string="";
     password:string="";
+    //name:string="";
   	private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private router: Router, private _http: Http) { }
@@ -27,8 +28,10 @@ export class LoginComponent implements OnInit {
           r=>{
             let data = r.json();
             let token = data.data.api_token;
+            let name = data.data.name;
             if( !!token ){
             	localStorage.setItem("token", token);
+              localStorage.setItem("name", name);
             	console.log("REDIRECT");
               this.router.navigateByUrl('cars');  
             }

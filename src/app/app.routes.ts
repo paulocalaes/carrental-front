@@ -6,12 +6,14 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CarInfoComponent } from './car/car-info.component';
+import { CarComponent } from './car/car.component';
 import { LoginComponent } from './login/login.component';
 
 
 const appRoutes: Routes  = [
   { path: '', component: LoginComponent }, 	
-  { path: 'cars', component: CarInfoComponent },
+  { path: 'car/:id', component: CarInfoComponent },
+  { path: 'cars', component: CarComponent },
   { path: '**', redirectTo: ''}
 ];
 

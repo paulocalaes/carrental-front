@@ -1,52 +1,51 @@
-
-<h1>Hello word</h1>  
-<!-- <div *ngIf="car"> -->
-<!--   <md-card style="width: 30%">
-    <md-card-header>
-      <md-card-title>{{car.make}} - {{car.model}} details!</md-card-title>
-    </md-card-header>
-    <md-card-content>
+<div class="container" style="margin-top: 20px;">
+   <div class="md-card" style="width: 30%">
+    <div class="form-group">
+      <h2 class="title">{{car.make}} - {{car.model}} details!</h2>
+    </div>
+    <div class="md-card-content">
       <div><label>id: </label>{{car.id}}</div>
-      <div>
-        <label>Make: </label>
-        <input [(ngModel)]="car.make" placeholder="make" />
+      <div class="form-group">
+        <label for="make">Make: </label>
+        <input class="form-control" name="make" [(ngModel)]="car.make" placeholder="make" />
       </div>
       <div>
         <label>Model: </label>
-        <input [(ngModel)]="car.model" placeholder="model" />
+        <input class="form-control" name="model" [(ngModel)]="car.model" placeholder="model" />
       </div>
       <div>
         <label>Owner: </label>
-        <input [(ngModel)]="car.owner" placeholder="owner" />
+        <input class="form-control" name="owner" [(ngModel)]="car.owner" placeholder="owner" />
       </div>
       <div>
         <label>Description: </label>
-        <input [(ngModel)]="car.description" placeholder="description" />
+        <input class="form-control" name="description" [(ngModel)]="car.description" placeholder="description" />
       </div>
       <div>
         <label>Horsepower: </label>
-        <input [(ngModel)]="car.horsepower" placeholder="horsepower" />
+        <input class="form-control" name="horsepower" [(ngModel)]="car.horsepower" placeholder="horsepower" />
       </div>
       <div>
         <label>Number of doors: </label>
-        <input [(ngModel)]="car.number_of_doors" placeholder="number of doors" />
+        <input class="form-control" name="number_of_doors" [(ngModel)]="car.number_of_doors" placeholder="number of doors" />
       </div>
       <div>
         <label>Number of seats: </label>
-        <input [(ngModel)]="car.number_of_seats" placeholder="number of seats" />
+        <input class="form-control" name="number_of_seats" [(ngModel)]="car.number_of_seats" placeholder="number of seats" />
       </div>
       <div>
         <label>Transmission: </label>
-        <input [(ngModel)]="car.transmission" placeholder="transmission" />
+        <input class="form-control" name="transmission" [(ngModel)]="car.transmission" placeholder="transmission" />
       </div>
       <div>
         <label>Fuel: </label>
-        <input [(ngModel)]="car.fuel" placeholder="fuel" />
+        <input class="form-control" name="fuel" [(ngModel)]="car.fuel" placeholder="fuel" />
       </div>
-    </md-card-content>
-    <md-card-actions>
-      <button md-button (click)="goBack()"> Back </button>
-      <button md-button (click)="updateCar()"> Update </button>
-    </md-card-actions>
-  </md-card>
-  <div> -->
+    </div>
+    <hr>
+    <div>
+      <a class="btn pull-left" href="./cars"> Back </a>
+      <button class="btn btn-primary  pull-right" (click)="updateCar(car.id)"> Update </button>
+    </div>
+  </div>
+</div>

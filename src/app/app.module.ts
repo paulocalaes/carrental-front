@@ -17,13 +17,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { MaterialModule } from '@angular/material';
 import { routing } from './app.routes';
 import { LoginComponent } from './login/login.component';
+import { FilterPipe} from '../filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent, 
     CarComponent,
     CarInfoComponent,
-    LoginComponent
+    LoginComponent,
+    FilterPipe 
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,6 @@ import { LoginComponent } from './login/login.component';
    // MaterialModule
    routing
   ],
-  providers: [CarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
