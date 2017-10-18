@@ -24,6 +24,7 @@ export class CarAddComponent implements OnInit {
     transmission:string="";
     fuel:string=""; 
     token:string="";
+    video:string="";
 
   constructor(
     private route: ActivatedRoute,
@@ -57,12 +58,14 @@ export class CarAddComponent implements OnInit {
             number_of_doors:this.number_of_doors,
             number_of_seats:this.number_of_seats,
             transmission:this.transmission,
-            fuel:this.fuel
+            fuel:this.fuel,
+            video:this.video
           }
         ).subscribe(
           r=>{
             let data = r.json();
-            console.log("Inserted");             
+            console.log("Inserted");  
+            window.location.replace('./cars');           
           },
           error=>{
             if( error.status == 422){

@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import { Http, Headers,RequestOptions } from '@angular/http';
 import { Car } from '../car';
 import { slideInDownAnimation } from '../../../animations';
-
+import {DomSanitizer} from '@angular/platform-browser';
 
  
 @Injectable()
@@ -16,16 +16,23 @@ import { slideInDownAnimation } from '../../../animations';
 })
 export class CarViewComponent implements OnInit {
  
-  car: Car;
+   car: Car;
    token:string="";
    public star = 4;
+   public video:string = 'ZuaqDvdPdoQ';
+   public url;
+   public youtube;
+   baseUrl:string = "https://www.youtube.com/embed/";
   constructor(
     private route: ActivatedRoute,
     private location: Location,
     private router: Router,
     private _http: Http,
+    private sanitizer: DomSanitizer
 
-  ) {  }
+  ) { 
+    //this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.baseUrl+this.video);
+ }
  
   ngOnInit(): void {
       let id = this.route.snapshot.params["id"];
@@ -48,6 +55,11 @@ export class CarViewComponent implements OnInit {
             console.log(data.id);
             this.car = data; 
             this.star = data.rate;
+            if(data.video){
+              this.video = data.video;
+              
+            }
+            
           },
           error=>{
             if( error.status == 401){
@@ -56,6 +68,9 @@ export class CarViewComponent implements OnInit {
             }
           }
       );
+  }
+  ngAfterContentChecked(){
+    this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.baseUrl+this.video);
   }
   updateRate(id){
     let token = localStorage.getItem("token");
@@ -66,16 +81,6 @@ export class CarViewComponent implements OnInit {
           'http://api.triviasistemas.com.br/api/cars/'+id, 
           {
             api_token: token,
-            /*make:this.car.make, 
-            model:this.car.model,
-            owner:this.car.owner,
-            description:this.car.description,
-            horsepower:this.car.horsepower,
-            number_of_doors:this.car.number_of_doors,
-            number_of_seats:this.car.number_of_seats,
-            transmission:this.car.transmission,
-            fuel:this.car.fuel,
-            video:this.car.video*/
             rate:this.star
           }
         ).subscribe(

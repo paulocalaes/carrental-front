@@ -16,7 +16,7 @@ const appRoutes: Routes  = [
   { path: '', component: LoginComponent }, 	
   { path: 'car/:id', component: CarInfoComponent },
   { path: 'car/view/:id', component: CarViewComponent },
-  { path: 'car/add', component: CarAddComponent },
+  { path: 'cars/add', component: CarAddComponent },
   { path: 'cars', component: CarComponent },
   { path: '**', redirectTo: ''}
 ];

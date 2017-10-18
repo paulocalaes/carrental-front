@@ -2,47 +2,52 @@
     <div class="form-group">
       <h2 class="title">Add Car</h2>
     </div>
-    <div class="md-card-content">
+    <form>
       <div class="form-group">
         <label for="make">Make: </label>
-        <input class="form-control" name="make" [(ngModel)]="make" placeholder="make" />
+        <input class="form-control" name="make" [(ngModel)]="make" placeholder="make" required="" />
       </div>
-      <div>
+      <div class="form-group">
         <label>Model: </label>
         <input class="form-control" name="model" [(ngModel)]="model" placeholder="model" />
       </div>
-      <div>
+      <div class="form-group">
         <label>Owner: </label>
         <input class="form-control" name="owner" [(ngModel)]="owner" placeholder="owner" />
       </div>
-      <div>
+      <div class="form-group">
         <label>Description: </label>
         <input class="form-control" name="description" [(ngModel)]="description" placeholder="description" />
       </div>
-      <div>
+      <div class="form-group">
         <label>Horsepower: </label>
         <input class="form-control" name="horsepower" [(ngModel)]="horsepower" placeholder="horsepower" />
       </div>
-      <div>
+      <div class="form-group">
         <label>Number of doors: </label>
         <input class="form-control" name="number_of_doors" [(ngModel)]="number_of_doors" placeholder="number of doors" />
       </div>
-      <div>
+      <div class="form-group">
         <label>Number of seats: </label>
         <input class="form-control" name="number_of_seats" [(ngModel)]="number_of_seats" placeholder="number of seats" />
       </div>
-      <div>
+      <div class="form-group">
         <label>Transmission: </label>
         <input class="form-control" name="transmission" [(ngModel)]="transmission" placeholder="transmission" />
       </div>
-      <div>
+      <div class="form-group">
         <label>Fuel: </label>
         <input class="form-control" name="fuel" [(ngModel)]="fuel" placeholder="fuel" />
       </div>
-    </div>
-    <hr>
-    <div>
-      <a class="btn pull-left" href="./cars"> Back </a>
-      <button class="btn btn-primary  pull-right" (click)="addCar()"> Add </button>
-    </div>
+      <div class="form-group">
+        <label>Video(YoutubeID): </label>
+        <input class="form-control" name="fuel" [(ngModel)]="video" placeholder="video" />
+      </div>
+      <hr>
+      <div>
+        <a class="btn pull-left" href="./cars"> Back </a>
+        <button type="submit" class="btn btn-primary  pull-right" (click)="addCar()"> Add </button>
+      </div>
+    </form>
+    
 </div>
