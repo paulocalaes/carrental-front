@@ -9,4 +9,6 @@ export class Car {
     number_of_seats: String;
     transmission: String;
     fuel: String;
+    video:String;
+    rate:String;
 }

@@ -73,7 +73,8 @@ export class CarInfoComponent implements OnInit {
             number_of_doors:this.car.number_of_doors,
             number_of_seats:this.car.number_of_seats,
             transmission:this.car.transmission,
-            fuel:this.car.fuel
+            fuel:this.car.fuel,
+            video:this.car.video
           }
         ).subscribe(
           r=>{

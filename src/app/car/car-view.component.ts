@@ -18,6 +18,7 @@ export class CarViewComponent implements OnInit {
  
   car: Car;
    token:string="";
+   public star = 4;
   constructor(
     private route: ActivatedRoute,
     private location: Location,
@@ -46,6 +47,7 @@ export class CarViewComponent implements OnInit {
             let data = r.json();            
             console.log(data.id);
             this.car = data; 
+            this.star = data.rate;
           },
           error=>{
             if( error.status == 401){
@@ -54,5 +56,38 @@ export class CarViewComponent implements OnInit {
             }
           }
       );
+  }
+  updateRate(id){
+    let token = localStorage.getItem("token");
+        if(!token){
+          this.router.navigateByUrl("");
+      }
+      this._http.put(
+          'http://api.triviasistemas.com.br/api/cars/'+id, 
+          {
+            api_token: token,
+            /*make:this.car.make, 
+            model:this.car.model,
+            owner:this.car.owner,
+            description:this.car.description,
+            horsepower:this.car.horsepower,
+            number_of_doors:this.car.number_of_doors,
+            number_of_seats:this.car.number_of_seats,
+            transmission:this.car.transmission,
+            fuel:this.car.fuel,
+            video:this.car.video*/
+            rate:this.star
+          }
+        ).subscribe(
+          r=>{
+            let data = r.json();
+            console.log("Atualizou");             
+          },
+          error=>{
+            if( error.status == 422){
+              console.error( "DEU PAU");
+            }
+          }
+        );
   } 
 }
