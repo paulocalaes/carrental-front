@@ -2,7 +2,6 @@ import { Component, OnInit, Input, Injectable } from '@angular/core';
 import { ActivatedRoute, Params,Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Http, Headers,RequestOptions } from '@angular/http';
-import { Car } from '../car';
 import { slideInDownAnimation } from '../../../animations';
 
 
@@ -39,20 +38,15 @@ export class CarAddComponent implements OnInit {
         if(!token){
           this.router.navigateByUrl("");
       }      
-
-      let myHeaders=new Headers();
-      myHeaders.append('Content-Type', 'application/json');
-      myHeaders.append('Authorization', 'Bearer '+token);
-      let options = new RequestOptions({ headers: myHeaders });
   }
 
-  addCar(id): void {
+  addCar(): void {
     let token = localStorage.getItem("token");
         if(!token){
           this.router.navigateByUrl("");
       }
       this._http.post(
-          'http://127.0.0.1:8000/api/cars', 
+          'http://api.triviasistemas.com.br/api/cars', 
           {
             api_token: token,
             make:this.make, 

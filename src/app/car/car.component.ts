@@ -17,12 +17,14 @@ export class CarComponent implements OnInit {
   cars: Car[];
   selectedCar: Car;
   newCar: Car;
-
+public searchText:string;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private _http: Http
-    ) { }
+    ) { 
+
+  }
 
   ngOnInit() {
     //this.carService.getCars().then(cars => this.cars = cars);
@@ -37,7 +39,7 @@ export class CarComponent implements OnInit {
       let options = new RequestOptions({ headers: myHeaders });
 
       this._http.get(
-          'http://127.0.0.1:8000/api/cars', 
+          'http://api.triviasistemas.com.br/api/cars', 
            options
         ).subscribe( 
           r=>{
@@ -55,15 +57,6 @@ export class CarComponent implements OnInit {
     this.newCar = new Car();
   }
 
-  createCar(car: Car): void {
-
-   // this.carService.createCar(car)
-   //   .then(car => {
-    //    this.cars.push(car);
-    //    this.selectedCar = null;
-     // });
-  }
-
   deleteCar(id:number, index:number): void {
     let token = localStorage.getItem("token");
     if(!token){
@@ -74,7 +67,7 @@ export class CarComponent implements OnInit {
       myHeaders.append('Authorization', 'Bearer '+token);
       let options = new RequestOptions({ headers: myHeaders });
     this._http.delete(
-          'http://127.0.0.1:8000/api/cars/'+id, 
+          'http://api.triviasistemas.com.br/api/cars/'+id, 
            options
         ).subscribe( 
           r=>{
@@ -89,19 +82,6 @@ export class CarComponent implements OnInit {
             }
           }
       );
-    }     
-
-      
-         
-  }
-
-  showInfo(car: Car): void {
-    this.selectedCar = car;
-    this.router.navigate(['/information', this.selectedCar.id]);
-  }
-
-  updateCar(car: Car): void {
-    this.selectedCar = car;
-    this.router.navigateByUrl('/car/'+this.selectedCar.id);
+    }      
   }
 }

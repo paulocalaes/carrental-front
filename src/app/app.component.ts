@@ -28,7 +28,7 @@ export class AppComponent {
       }
 	    this._http.post(
 
-          'http://127.0.0.1:8000/api/logout', 
+          'http://api.triviasistemas.com.br/api/logout', 
           {
             api_token: token,
           }

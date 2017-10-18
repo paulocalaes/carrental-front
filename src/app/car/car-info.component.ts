@@ -39,7 +39,7 @@ export class CarInfoComponent implements OnInit {
       let options = new RequestOptions({ headers: myHeaders });
 
       this._http.get(
-          'http://127.0.0.1:8000/api/cars/'+id, 
+          'http://api.triviasistemas.com.br/api/cars/'+id, 
            options
         ).subscribe( 
           r=>{
@@ -62,7 +62,7 @@ export class CarInfoComponent implements OnInit {
           this.router.navigateByUrl("");
       }
       this._http.put(
-          'http://127.0.0.1:8000/api/cars/'+id, 
+          'http://api.triviasistemas.com.br/api/cars/'+id, 
           {
             api_token: token,
             make:this.car.make, 

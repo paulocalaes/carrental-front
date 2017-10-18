@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   submit(form: NgForm):void{
 
       this._http.post(
-          'http://127.0.0.1:8000/api/login', 
+          'http://api.triviasistemas.com.br/api/login', 
           {email:this.email,password:this.password}
         ).subscribe(
           r=>{
