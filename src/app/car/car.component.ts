@@ -64,13 +64,35 @@ export class CarComponent implements OnInit {
      // });
   }
 
-  deleteCar(car: Car): void {
-    //this.carService
-    //  .deleteCar(car)
-    //  .then(() => {
-   //     this.cars = this.cars.filter(b => b !== car);
-    //    if (this.selectedCar === car) { this.selectedCar = null; }
-    //  });
+  deleteCar(id:number, index:number): void {
+    let token = localStorage.getItem("token");
+    if(!token){
+          this.router.navigateByUrl("");
+    }else{
+      let myHeaders=new Headers();
+      myHeaders.append('Content-Type', 'application/json');
+      myHeaders.append('Authorization', 'Bearer '+token);
+      let options = new RequestOptions({ headers: myHeaders });
+    this._http.delete(
+          'http://127.0.0.1:8000/api/cars/'+id, 
+           options
+        ).subscribe( 
+          r=>{
+            let data = r.json();            
+            console.log("Deleted");
+            this.cars.splice(index, 1);
+          },
+          error=>{
+            if( error.status == 401){
+              console.error( "Unauthorized");
+              this.router.navigateByUrl(''); 
+            }
+          }
+      );
+    }     
+
+      
+         
   }
 
   showInfo(car: Car): void {

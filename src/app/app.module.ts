@@ -6,6 +6,8 @@ import { HttpModule }    from '@angular/http';
 import { AppComponent } from './app.component';
 
 import { CarInfoComponent } from './car/car-info.component';
+import { CarViewComponent } from './car/car-view.component';
+import { CarAddComponent } from './car/car-add.component';
 import { CarComponent } from './car/car.component';
 import { CarService } from './car.service';
 
@@ -24,6 +26,8 @@ import { FilterPipe} from '../filter.pipe';
     AppComponent, 
     CarComponent,
     CarInfoComponent,
+    CarViewComponent,
+    CarAddComponent,
     LoginComponent,
     FilterPipe 
   ],

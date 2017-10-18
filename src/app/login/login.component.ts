@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   	private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private router: Router, private _http: Http) { }
-  
+  public name = localStorage.getItem("name");
   submit(form: NgForm):void{
 
       this._http.post(
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
             	localStorage.setItem("token", token);
               localStorage.setItem("name", name);
             	console.log("REDIRECT");
-              this.router.navigateByUrl('cars');  
+              window.location.reload();  
             }
 
           },

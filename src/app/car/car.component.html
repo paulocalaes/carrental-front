@@ -15,7 +15,7 @@
         <th>Model</th>
         <th></th>
     </tr>
-    <tr *ngFor="let car of cars | filter : searchText" (click)="showInfo(car)">
+    <tr *ngFor="let car of cars | filter : searchText;let i = index;" (click)="showInfo(car)">
       <td>
           {{car.id}}
       </td>
@@ -26,12 +26,12 @@
           {{car.model}}
       </td>
       <td>
-        <button class="btn btn-danger" (click)="deleteCar(car); $event.stopPropagation()">Delete</button>
+        <button class="btn btn-danger" (click)="deleteCar(car.id, i); $event.stopPropagation()">Delete</button>
 
-        <a  class="btn btn-primary" href="/car/{{car.id}}">
-        Update</a>
+        <a  class="btn btn-primary" href="/car/{{car.id}}">Update</a>
 
-        <button class="btn" (click)="updateCar(car); $event.stopPropagation()">View</button>
+        <a  class="btn btn-info" href="/car/view/{{car.id}}">View</a>
+        
       </td>
     </tr>
   </table>

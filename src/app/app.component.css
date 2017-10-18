@@ -45,3 +45,10 @@
     -moz-border-radius: 6px 0 6px 6px;
     border-radius: 6px 0 6px 6px;
 }
+.navbar-inverse .navbar-nav>li>a{
+    color: #cccccc;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover{
+    color: #FFFFFF;
+}
