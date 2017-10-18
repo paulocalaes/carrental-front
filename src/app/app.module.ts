@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -9,7 +9,6 @@ import { CarInfoComponent } from './car/car-info.component';
 import { CarViewComponent } from './car/car-view.component';
 import { CarAddComponent } from './car/car-add.component';
 import { CarComponent } from './car/car.component';
-import { CarService } from './car.service';
 
 //import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 //import { BikesDatabaseService } from './bikes-database.service';
@@ -29,7 +28,7 @@ import { FilterPipe} from '../filter.pipe';
     CarViewComponent,
     CarAddComponent,
     LoginComponent,
-    FilterPipe 
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -40,7 +39,8 @@ import { FilterPipe} from '../filter.pipe';
     //AppRoutingModule,
     BrowserAnimationsModule,
    // MaterialModule
-   routing
+   routing,
+   ReactiveFormsModule 
   ],
   bootstrap: [AppComponent]
 })

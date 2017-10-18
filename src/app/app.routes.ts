@@ -11,7 +11,6 @@ import { CarAddComponent } from './car/car-add.component';
 import { CarComponent } from './car/car.component';
 import { LoginComponent } from './login/login.component';
 
-
 const appRoutes: Routes  = [
   { path: '', component: LoginComponent }, 	
   { path: 'car/:id', component: CarInfoComponent },

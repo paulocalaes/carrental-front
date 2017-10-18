@@ -1,53 +1,68 @@
 <div class="container" style="margin-top: 20px;">
     <div class="form-group">
       <h2 class="title">Add Car</h2>
-    </div>
-    <form>
+    </div> 
+    <form  [formGroup]="rForm" (ngSubmit)="addCar(rForm.value)">
       <div class="form-group">
         <label for="make">Make: </label>
-        <input class="form-control" name="make" [(ngModel)]="make" placeholder="make" required="" />
+        <input class="form-control" formControlName="make"  placeholder="make" required />
+        <div class="alert" *ngIf="!rForm.controls['make'].valid && rForm.controls['make'].touched">{{ titleAlert }}</div>
       </div>
       <div class="form-group">
         <label>Model: </label>
-        <input class="form-control" name="model" [(ngModel)]="model" placeholder="model" />
+        <input class="form-control" formControlName="model"  placeholder="model" />
+        <div class="alert" *ngIf="!rForm.controls['model'].valid && rForm.controls['model'].touched">{{ titleAlert }}</div>
       </div>
       <div class="form-group">
         <label>Owner: </label>
-        <input class="form-control" name="owner" [(ngModel)]="owner" placeholder="owner" />
+        <input class="form-control" formControlName="owner"  placeholder="owner" />
+        <div class="alert" *ngIf="!rForm.controls['owner'].valid && rForm.controls['owner'].touched">{{ titleAlert }}</div>
       </div>
       <div class="form-group">
         <label>Description: </label>
-        <input class="form-control" name="description" [(ngModel)]="description" placeholder="description" />
+        <input class="form-control" formControlName="description" placeholder="description" />
       </div>
       <div class="form-group">
         <label>Horsepower: </label>
-        <input class="form-control" name="horsepower" [(ngModel)]="horsepower" placeholder="horsepower" />
+        <input class="form-control" formControlName="horsepower"  placeholder="horsepower" />
       </div>
       <div class="form-group">
         <label>Number of doors: </label>
-        <input class="form-control" name="number_of_doors" [(ngModel)]="number_of_doors" placeholder="number of doors" />
+        <input class="form-control"  type="number" min=0 max=10 formControlName="number_of_doors"  placeholder="number of doors" />
+        <div class="alert" *ngIf="!rForm.controls['number_of_doors'].valid && rForm.controls['number_of_doors'].touched">You must specify a number that's between 0 and 9.</div>
       </div>
       <div class="form-group">
         <label>Number of seats: </label>
-        <input class="form-control" name="number_of_seats" [(ngModel)]="number_of_seats" placeholder="number of seats" />
+        <input class="form-control" type="number" min=0 max=10 formControlName="number_of_seats" placeholder="number of seats" />
+        <div class="alert" *ngIf="!rForm.controls['number_of_seats'].valid && rForm.controls['number_of_seats'].touched">You must specify a number that's between 0 and 9.</div>
       </div>
       <div class="form-group">
         <label>Transmission: </label>
-        <input class="form-control" name="transmission" [(ngModel)]="transmission" placeholder="transmission" />
+        <input class="form-control" formControlName="transmission" placeholder="transmission" />
       </div>
       <div class="form-group">
         <label>Fuel: </label>
-        <input class="form-control" name="fuel" [(ngModel)]="fuel" placeholder="fuel" />
+        <input class="form-control" formControlName="fuel"  placeholder="fuel" />
       </div>
       <div class="form-group">
         <label>Video(YoutubeID): </label>
-        <input class="form-control" name="fuel" [(ngModel)]="video" placeholder="video" />
+        <input class="form-control" formControlName="fuel"  placeholder="video" />
       </div>
       <hr>
       <div>
         <a class="btn pull-left" href="./cars"> Back </a>
-        <button type="submit" class="btn btn-primary  pull-right" (click)="addCar()"> Add </button>
+        <button type="submit" class="btn btn-primary  pull-right" [disabled]="!rForm.valid"> Add Car </button>
       </div>
     </form>
     
 </div>
+
+<ng-template #forminfo>
+  <div class="form-container">
+    <div class="row columns">
+        <h1>{{ make }}</h1>
+
+        <p>{{ model }}</p>
+    </div>
+  </div>
+</ng-template>
