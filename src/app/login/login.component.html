@@ -3,15 +3,17 @@
     Welcome to {{title}}!!
   </h1>
   <hr />
-    <form *ngIf="!name" (ngSubmit)="submit(fm)" #fm="ngForm">
+    <form *ngIf="!name" (ngSubmit)="submit(rForm.value)" [formGroup]="rForm" >
       <div class="form-group">
         <label for="email">Email:</label>
-        <input type="text" class="form-control" [(ngModel)]="email" name="email">
+        <input type="text" class="form-control" formControlName="email" autofocus>
+        <div class="alert" *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched">{{ titleAlert }}</div>
       </div>
       <div class="form-group">
         <label for="password">Password:</label>
-        <input type="password" class="form-control" [(ngModel)]="password" name="password">
+        <input type="password" class="form-control" formControlName="password">
+        <div class="alert" *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched">{{ titleAlert }}</div>
       </div>
-      <button type="submit" class="btn btn-primary">Login</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!rForm.valid">Login</button>
     </form>
 </div>

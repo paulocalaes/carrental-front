@@ -5,7 +5,7 @@
     <form  [formGroup]="rForm" (ngSubmit)="addCar(rForm.value)">
       <div class="form-group">
         <label for="make">Make: </label>
-        <input class="form-control" formControlName="make"  placeholder="make" required />
+        <input class="form-control" formControlName="make"  placeholder="make" required autofocus/>
         <div class="alert" *ngIf="!rForm.controls['make'].valid && rForm.controls['make'].touched">{{ titleAlert }}</div>
       </div>
       <div class="form-group">
