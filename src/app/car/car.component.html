@@ -7,7 +7,7 @@
 </div>
 <form class="form-inline">
   <div class="form-group">
-    <label for="search">Search for make or model: </label>
+    <label for="search">Search by make or model: </label>
     <input class="form-control" [(ngModel)]="searchText" placeholder="Type Make or Model" name="search">
   </div>
   <br><br>
@@ -50,7 +50,7 @@
           <h4 class="modal-title">Are you sure?</h4>
         </div>
         <div class="modal-body">
-          <p>Do you really want delete <strong>{{modalCarname}}</strong>?</p>
+          <p>Do you really want to delete <strong>{{modalCarname}}</strong>?</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal" (click)="closeModal()">Close</button>
