@@ -3,7 +3,7 @@ import { ActivatedRoute, Params,Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Http, Headers,RequestOptions } from '@angular/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { API } from '../api';
 
  
 @Injectable()
@@ -14,7 +14,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CarAddComponent implements OnInit {
 
-
+  private api:API = new API();
     rForm: FormGroup;
   post:any;
 titleAlert:string = 'This field is required';
@@ -69,7 +69,7 @@ titleAlert:string = 'This field is required';
           this.router.navigateByUrl("");
       }
       this._http.post(
-          'http://api.triviasistemas.com.br/api/cars', 
+          this.api.url+'/api/cars', 
           {
             api_token: token,
             make:post.make, 

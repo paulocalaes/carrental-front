@@ -4,6 +4,7 @@ import { Login } from './login';
 import { NgForm }   from '@angular/forms';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import { API } from './api';
 
 @Injectable()
 @Component({
@@ -12,6 +13,7 @@ import 'rxjs/add/operator/toPromise';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  private api:API = new API();
     constructor(
     	private _http: Http,
     	private route: ActivatedRoute,
@@ -28,7 +30,7 @@ export class AppComponent {
       }
 	    this._http.post(
 
-          'http://api.triviasistemas.com.br/api/logout', 
+          this.api.url+'/api/logout', 
           {
             api_token: token,
           }

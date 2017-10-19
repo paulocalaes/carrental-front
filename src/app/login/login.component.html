@@ -3,16 +3,20 @@
     Welcome to {{title}}!!
   </h1>
   <hr />
+  <div *ngIf="updated" class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" (click)="closeAlert()" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>Warning!</strong> Wrong username or password
+</div>
     <form *ngIf="!name" (ngSubmit)="submit(rForm.value)" [formGroup]="rForm" >
       <div class="form-group">
         <label for="email">Email:</label>
         <input type="text" class="form-control" formControlName="email" autofocus>
-        <div class="alert" *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched">{{ titleAlert }}</div>
+        <div class="alert alert-warning" *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched">{{ titleAlert }}</div>
       </div>
       <div class="form-group">
         <label for="password">Password:</label>
         <input type="password" class="form-control" formControlName="password">
-        <div class="alert" *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched">{{ titleAlert }}</div>
+        <div class="alert alert-warning" *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched">{{ titleAlert }}</div>
       </div>
       <button type="submit" class="btn btn-primary" [disabled]="!rForm.valid">Login</button>
     </form>

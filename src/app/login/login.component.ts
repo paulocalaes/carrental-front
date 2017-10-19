@@ -4,6 +4,7 @@ import { NgForm }   from '@angular/forms';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { API } from '../api';
 
 @Injectable()
 @Component({
@@ -12,11 +13,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+    private api:API = new API();
 	  title = 'Car Rental';
 
     rForm: FormGroup;
     post:any;
     titleAlert:string = 'This field is required';
+    updated = false;
 
     email:string="";
     password:string="";
@@ -34,7 +38,7 @@ export class LoginComponent implements OnInit {
   submit(post):void{
 
       this._http.post(
-          'http://api.triviasistemas.com.br/api/login', 
+          this.api.url+'/api/login', 
           {email:post.email,password:post.password}
         ).subscribe(
           r=>{
@@ -50,14 +54,12 @@ export class LoginComponent implements OnInit {
 
           },
           error=>{
-            if( error.status == 422){
-              console.error( "DEU PAU");
-            }
+            this.updated = true;
           }
         );
   }
 
   ngOnInit() {
   }
-
+closeAlert(){ this.updated = false;}
 }

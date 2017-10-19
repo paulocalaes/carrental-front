@@ -6,17 +6,17 @@
       <div class="form-group">
         <label for="make">Make: </label>
         <input class="form-control" formControlName="make"  placeholder="make" required autofocus/>
-        <div class="alert" *ngIf="!rForm.controls['make'].valid && rForm.controls['make'].touched">{{ titleAlert }}</div>
+        <div class="alert alert-warning" *ngIf="!rForm.controls['make'].valid && rForm.controls['make'].touched">{{ titleAlert }}</div>
       </div>
       <div class="form-group">
         <label>Model: </label>
         <input class="form-control" formControlName="model"  placeholder="model" />
-        <div class="alert" *ngIf="!rForm.controls['model'].valid && rForm.controls['model'].touched">{{ titleAlert }}</div>
+        <div class="alert alert-warning" *ngIf="!rForm.controls['model'].valid && rForm.controls['model'].touched">{{ titleAlert }}</div>
       </div>
       <div class="form-group">
         <label>Owner: </label>
         <input class="form-control" formControlName="owner"  placeholder="owner" />
-        <div class="alert" *ngIf="!rForm.controls['owner'].valid && rForm.controls['owner'].touched">{{ titleAlert }}</div>
+        <div class="alert alert-warning" *ngIf="!rForm.controls['owner'].valid && rForm.controls['owner'].touched">{{ titleAlert }}</div>
       </div>
       <div class="form-group">
         <label>Description: </label>
@@ -28,13 +28,13 @@
       </div>
       <div class="form-group">
         <label>Number of doors: </label>
-        <input class="form-control"  type="number" min=0 max=10 formControlName="number_of_doors"  placeholder="number of doors" />
-        <div class="alert" *ngIf="!rForm.controls['number_of_doors'].valid && rForm.controls['number_of_doors'].touched">You must specify a number that's between 0 and 9.</div>
+        <input class="form-control"  type="number" min=0 max=9 formControlName="number_of_doors"  placeholder="number of doors" />
+        <div class="alert alert-warning" *ngIf="!rForm.controls['number_of_doors'].valid && rForm.controls['number_of_doors'].touched">You must specify a number that's between 0 and 9.</div>
       </div>
       <div class="form-group">
         <label>Number of seats: </label>
-        <input class="form-control" type="number" min=0 max=10 formControlName="number_of_seats" placeholder="number of seats" />
-        <div class="alert" *ngIf="!rForm.controls['number_of_seats'].valid && rForm.controls['number_of_seats'].touched">You must specify a number that's between 0 and 9.</div>
+        <input class="form-control" type="number" min=0 max=9 formControlName="number_of_seats" placeholder="number of seats" />
+        <div class="alert alert-warning" *ngIf="!rForm.controls['number_of_seats'].valid && rForm.controls['number_of_seats'].touched">You must specify a number that's between 0 and 9.</div>
       </div>
       <div class="form-group">
         <label>Transmission: </label>

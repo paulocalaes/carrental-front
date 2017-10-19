@@ -5,6 +5,7 @@ import { Http, Headers,RequestOptions } from '@angular/http';
 import { Car } from '../car';
 import { slideInDownAnimation } from '../../../animations';
 import {DomSanitizer} from '@angular/platform-browser';
+import { API } from '../api';
 
  
 @Injectable()
@@ -15,7 +16,8 @@ import {DomSanitizer} from '@angular/platform-browser';
   animations: [ slideInDownAnimation ]
 })
 export class CarViewComponent implements OnInit {
- 
+
+   private api:API = new API();
    car: Car;
    token:string="";
    public star = 4;
@@ -31,6 +33,7 @@ export class CarViewComponent implements OnInit {
     private sanitizer: DomSanitizer
 
   ) { 
+    this.car = new Car();
     //this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.baseUrl+this.video);
  }
  
@@ -47,7 +50,7 @@ export class CarViewComponent implements OnInit {
       let options = new RequestOptions({ headers: myHeaders });
 
       this._http.get(
-          'http://api.triviasistemas.com.br/api/cars/'+id, 
+          this.api.url+'/api/cars/'+id, 
            options
         ).subscribe( 
           r=>{
@@ -78,7 +81,7 @@ export class CarViewComponent implements OnInit {
           this.router.navigateByUrl("");
       }
       this._http.put(
-          'http://api.triviasistemas.com.br/api/cars/'+id, 
+          this.api.url+'/api/cars/'+id, 
           {
             api_token: token,
             rate:this.star

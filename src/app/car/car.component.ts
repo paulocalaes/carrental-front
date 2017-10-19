@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Car } from '../car';
 import { Http, Headers,RequestOptions } from '@angular/http';
 import { slideInDownAnimation } from '../../../animations';
+import { API } from '../api';
 
 
 @Injectable()
@@ -13,10 +14,16 @@ import { slideInDownAnimation } from '../../../animations';
   animations: [ slideInDownAnimation ]
 })
 export class CarComponent implements OnInit {
-
+  private api:API = new API();
   cars: Car[];
   selectedCar: Car;
   newCar: Car;
+  modalCarname:String="";
+  modalCarId:number=-1;
+  modalCarIndex:number=-1;
+  showModal=false;
+  updated=false;
+
 public searchText:string;
   constructor(
     private router: Router,
@@ -39,7 +46,7 @@ public searchText:string;
       let options = new RequestOptions({ headers: myHeaders });
 
       this._http.get(
-          'http://api.triviasistemas.com.br/api/cars', 
+          this.api.url+'/api/cars', 
            options
         ).subscribe( 
           r=>{
@@ -56,7 +63,14 @@ public searchText:string;
       );
     this.newCar = new Car();
   }
-
+  closeModal(){ this.showModal = false;}
+  closeAlert(){ this.updated = false;}
+  deleteCarModal(car, index){
+      this.modalCarname= car.make+" - "+car.model;
+      this.modalCarId=car.id;
+      this.modalCarIndex=index;
+      this.showModal=true;
+  }
   deleteCar(id:number, index:number): void {
     let token = localStorage.getItem("token");
     if(!token){
@@ -67,13 +81,16 @@ public searchText:string;
       myHeaders.append('Authorization', 'Bearer '+token);
       let options = new RequestOptions({ headers: myHeaders });
     this._http.delete(
-          'http://api.triviasistemas.com.br/api/cars/'+id, 
+          this.api.url+'/api/cars/'+id, 
            options
         ).subscribe( 
           r=>{
             let data = r.json();            
             console.log("Deleted");
             this.cars.splice(index, 1);
+            this.closeModal();
+            this.updated=true;
+            window.scrollTo(0,0);
           },
           error=>{
             if( error.status == 401){
